@@ -1,0 +1,12 @@
+.login-form {
+    /* hardcode: width is fixed, cannot change with the change of screen*/
+    width: 300px; 
+    margin: 0 auto;
+  }
+  
+  .login-form-button {
+    width: 300px;
+    /* 这样可以让width随着屏幕大小而改变，且最大不超过400px */
+    /* max-width: 400px;
+    width: 60%; */
+  }
