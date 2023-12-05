@@ -6,6 +6,7 @@ import { TOKEN_KEY } from "../constants"; // export, no default
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
+    //这里有个bug，系统不会自动登出，但是这个token会过期，然后加载不出来内容，但是又还在登录后页面的状态
     localStorage.getItem(TOKEN_KEY) ? true : false
   );
 

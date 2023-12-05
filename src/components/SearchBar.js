@@ -13,18 +13,18 @@ function SearchBar(props) {
    const searchType = e.target.value;
    setSearchType(searchType);
    setError("");
-   // if (searchType === SEARCH_KEY.all) {
-   //   props.handleSearch({ type: searchType, keyword: "" });
-   // }
+   if (searchType === SEARCH_KEY.all) {
+     props.handleSearch({ type: searchType, keyword: "" });
+   }
  };
 
- const handleSearch = (value) => {
+ const searchButtonClick = (value) => {
    if (searchType !== SEARCH_KEY.all && value === "") {
      setError("Oops! You forgot to input the search content!");
      return;
    }
    setError("");
-   // props.handleSearch({ type: searchType, keyword: value });
+   props.handleSearch({ type: searchType, keyword: value });
  };
 
  return (
@@ -33,7 +33,7 @@ function SearchBar(props) {
        placeholder="input search text"
        enterButton="FindU"
        size="large"
-       onSearch={handleSearch}
+       onSearch={searchButtonClick}
        // 如果是选择在search all上，则不需要输入也不需要点击search
        disabled={searchType === SEARCH_KEY.all}
      />

@@ -16,6 +16,11 @@ function Home(props) {
     keyword: "",
   });
 
+  const searchService = (option) => {
+    const {type, keyword} = option;
+    setSearchOption({type, keyword});  //名字一致的时候可以简化写，甚至可以更加简化直接写option,让它自己解构
+  }
+
   useEffect(() => {
     const { type, keyword } = searchOption;
     fetchPost(searchOption);
@@ -62,6 +67,7 @@ function Home(props) {
         .filter((item) => item.type === "image") 
         .map((image) => {
           return {
+            postId: image.id,
             src: image.url,
             user: image.user,
             caption: image.message,
@@ -106,7 +112,8 @@ function Home(props) {
   const operations = <Button>Post your status</Button>;
   return (
     <div className="home">
-      <SearchBar />
+      {/* 第一个handleSearch相当于是SearchBar自定义的attribute，叫啥名字都可以，第二个是我们自定义的function */}
+      <SearchBar handleSearch={searchService}/> 
       <div className="display">
         <Tabs
           onChange={(key) => setActiveTab(key)}
