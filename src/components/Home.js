@@ -5,6 +5,7 @@ import axios from "axios";
 import SearchBar from "./SearchBar";
 import { SEARCH_KEY, BASE_URL, TOKEN_KEY } from "../constants";
 import PhotoGallery from "./PhotoGallery";
+import CreatePostButton from "./CreatePostButton";
 
 const { TabPane } = Tabs;
 
@@ -109,7 +110,16 @@ function Home(props) {
     }
   };
 
-  const operations = <Button>Post your status</Button>;
+  const showPost = (type) => {
+    console.log("type -> ", type);
+    setActiveTab(type);
+    // 等待3000ms(3s)后，再更新search result
+    setTimeout(() => {
+      setSearchOption({ type: SEARCH_KEY.all, keyword: "" });
+    }, 3000);
+  };
+  const operations = <CreatePostButton onShowPost={showPost} />;
+  
   return (
     <div className="home">
       {/* 第一个handleSearch相当于是SearchBar自定义的attribute，叫啥名字都可以，第二个是我们自定义的function */}
