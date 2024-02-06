@@ -1,5 +1,5 @@
 # FindU Frontend
 This is the frontend code of FindU project.
 
-# Technic Stack
+# Technical Stack
 React.js, JavaScript
